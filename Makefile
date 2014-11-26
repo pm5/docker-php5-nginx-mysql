@@ -3,10 +3,10 @@ PWD=`pwd`
 .PHONY: build test run
 
 build:
-	docker build --rm=true -t pomin5/drupal7 .
+	docker build --rm=true -t pomin5/php5-nginx .
 
 test:
-	docker run -it --rm=true -p 8080:80 --name drupal7 -v $(PWD):/app pomin5/drupal7 /bin/bash
+	docker run -it --rm=true -p 8080:80 --name php5-nginx -v $(PWD):/app pomin5/php5-nginx /bin/bash
 
 run:
-	docker run -d -p 8080:80 -v $(PWD):/app pomin5/drupal7
+	docker run -d -p 8080:80 -v $(PWD):/app pomin5/php5-nginx
