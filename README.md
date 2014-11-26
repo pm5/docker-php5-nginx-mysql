@@ -1,7 +1,7 @@
 
-A Docker setting to quickly test out Drupal 7 features.
+A Docker contain for PHP app using PHP-FPM and nginx.
 
 Usages
 ------
 
-        $ make build test
+        $ make build run
