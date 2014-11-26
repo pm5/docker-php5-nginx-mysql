@@ -19,3 +19,5 @@ RUN sed -i 's/error_log = \/var\/log\/php5-fpm.log/error_log = \/app\/log\/php5-
 VOLUME ["/app"]
 
 EXPOSE 80
+
+CMD ["/app/run.sh"]
