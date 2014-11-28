@@ -1,6 +1,6 @@
 PWD=`pwd`
 
-.PHONY: build test run
+.PHONY: build test run start stop clean
 
 build:
 	docker build --rm=true -t pomin5/docker-php5-nginx .
@@ -19,4 +19,3 @@ stop:
 
 clean:
 	docker rm -f php5-nginx || true
-	docker rmi pomin5/docker-php5-nginx || true
