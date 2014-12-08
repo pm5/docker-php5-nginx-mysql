@@ -4,7 +4,7 @@ upstream www-upstream-pool {
 
 server {
         listen          0.0.0.0:80;
-        server_name     docker.dev;
+        server_name _;
 
         root            /app/public;
         index           index.php;

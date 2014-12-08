@@ -11,7 +11,6 @@ RUN apt-get update && \
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD etc/nginx/sites-enabled /etc/nginx/sites-enabled/
-
 RUN sed -i 's/memory_limit = 128M/memory_limit = 256M/' /etc/php5/fpm/php.ini
 RUN sed -i 's/error_log = \/var\/log\/php5-fpm.log/error_log = \/app\/log\/php5-fpm.log/' /etc/php5/fpm/php-fpm.conf
 
