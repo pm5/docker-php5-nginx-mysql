@@ -6,11 +6,11 @@ server {
         listen          0.0.0.0:80;
         server_name _;
 
-        root            /app/public;
+        root            /var/www;
         index           index.php;
 
-        access_log      /app/log/nginx_access.log;
-        error_log       /app/log/nginx_error.log;
+        access_log      /var/log/nginx/access.log;
+        error_log       /var/log/nginx/error.log;
 
         location / {
             # if file exists return it right away
