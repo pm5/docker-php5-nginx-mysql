@@ -1,4 +1,4 @@
-NAME = pomin5/php5-docker
+NAME = pomin5/php5-nginx
 VERSION = 0.1.0
 
 .PHONY: build test
