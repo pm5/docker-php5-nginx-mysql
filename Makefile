@@ -1,15 +1,14 @@
+NAME = pomin5/php5-docker
+VERSION = 0.1.0
 
-.PHONY: build test clean
+.PHONY: build test
 
 build:
-	docker build --rm -t pomin5/php5-nginx .
+	docker build --rm -t $(NAME):$(VERSION) .
 
 test:
-	docker run -it --rm -p 8080:80 --name php5-nginx \
+	docker run -it --rm -p 8080:80 \
 	 	-v $(PWD)/public:/var/www \
 	 	-v $(PWD)/log/nginx:/var/log/nginx \
 	 	-v $(PWD)/log/php5:/var/log/php5 \
-	 	pomin5/php5-nginx /bin/bash
-
-clean:
-	docker rm -f php5-nginx || true
+	 	$(NAME):$(VERSION) /bin/bash
