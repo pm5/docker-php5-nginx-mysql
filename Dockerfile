@@ -13,10 +13,19 @@ RUN apt-get update && \
     apt-get install -yq nginx-full && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ADD mykey.pub /tmp/mykey.pub
-RUN cat /tmp/mykey.pub >> /root/.ssh/authorized_keys && rm -f /tmp/mykey.pub
 RUN mkdir /etc/service/root
 ADD service/root.sh /etc/service/root/run
+
+RUN useradd -u 1000 -g www-data --home-dir /app -m app
+RUN mkdir /etc/service/app
+ADD service/app.sh /etc/service/app/run
+
+ADD mykey.pub /tmp/mykey.pub
+RUN cat /tmp/mykey.pub >> /root/.ssh/authorized_keys && \
+  mkdir /app/.ssh && \
+  chown -R app:www-data /app/.ssh && \
+  cat /tmp/mykey.pub >> /app/.ssh/authorized_keys && \
+  rm -f /tmp/mykey.pub
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN rm /etc/nginx/sites-enabled/default

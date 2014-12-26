@@ -7,7 +7,7 @@ build:
 	docker build --rm -t $(NAME):$(VERSION) .
 
 test:
-	docker run -it --rm -p 8080:80 \
+	docker run -it --rm -p 8080:80 -p 2222:22 \
 	 	-v $(PWD)/public:/var/www \
 	 	-v $(PWD)/log/nginx:/var/log/nginx \
 	 	-v $(PWD)/log/php5:/var/log/php5 \
