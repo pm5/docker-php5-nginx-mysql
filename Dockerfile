@@ -1,6 +1,6 @@
 FROM phusion/baseimage:0.9.15
 MAINTAINER Pomin Wu <pomin5@gmail.com>
-ENV REFRESHED_AT 2014-12-26
+ENV REFRESHED_AT 2015-01-08
 
 ENV HOME /root
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
