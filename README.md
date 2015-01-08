@@ -1,12 +1,10 @@
 
 A Docker image for developing PHP app using PHP-FPM and nginx.
 
-This image is built for development, not deployment, so it does not contain the app directory `public`.  Changes to the content of `public` are reflected immediately in the container.
-
 Usages
 ------
 
-Add a `public/index.php` file with:
+Add a `index.php` file with:
 
         <?php
         print phpinfo();
