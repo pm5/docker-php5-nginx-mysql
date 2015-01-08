@@ -4,13 +4,14 @@ A Docker image for developing PHP app using PHP-FPM and nginx.
 Usages
 ------
 
-Add a `index.php` file with:
+Put an `index.php` file under project root directory with:
 
         <?php
         print phpinfo();
 
 Then
 
+        # put your SSH pubkey at `mykey.pub` if you want SSH access
         $ make build run
         # check http://localhost:8080/
 
