@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [ ! -f /app/password.txt ]; then
+if [ ! -f /home/app/password.txt ]; then
   chown -R app:www-data /var/www
   chmod 755 /var/www
-  pwgen 16 1 > /app/password.txt
-  echo app:$(cat /app/password.txt) | chpasswd
+  ln -s /var/www /home/app/public
+  pwgen 16 1 > /home/app/password.txt
+  echo app:$(cat /home/app/password.txt) | chpasswd
 fi

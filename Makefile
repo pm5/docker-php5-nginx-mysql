@@ -9,8 +9,6 @@ build:
 test:
 	docker run -it --rm \
 		-p 8080:80 -p 2222:22 -p 2020:20 -p 2121:21 \
-	 	-v $(PWD)/public:/var/www \
-	 	-v $(PWD)/log/nginx:/var/log/nginx \
-	 	-v $(PWD)/log/php5:/var/log/php5 \
-	 	-v $(PWD)/log/vsftpd:/var/log/vsftpd \
+	 	-v $(PWD):/var/www \
+	 	-v $(PWD)/.run/log:/var/log \
 	 	$(NAME):$(VERSION) /bin/bash

@@ -17,15 +17,15 @@ RUN apt-get update && \
 RUN mkdir /etc/service/root
 ADD service/root.sh /etc/service/root/run
 
-RUN useradd -u 1000 -g www-data --home-dir /app -s /bin/bash -m app
+RUN useradd -u 1000 -g www-data --home-dir /home/app -s /bin/bash -m app
 RUN mkdir /etc/service/app
 ADD service/app.sh /etc/service/app/run
 
 ADD mykey.pub /tmp/mykey.pub
 RUN cat /tmp/mykey.pub >> /root/.ssh/authorized_keys && \
-  mkdir /app/.ssh && \
-  chown -R app:www-data /app/.ssh && \
-  cat /tmp/mykey.pub >> /app/.ssh/authorized_keys && \
+  mkdir /home/app/.ssh && \
+  chown -R app:www-data /home/app/.ssh && \
+  cat /tmp/mykey.pub >> /home/app/.ssh/authorized_keys && \
   rm -f /tmp/mykey.pub
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
@@ -36,7 +36,6 @@ ADD service/nginx.sh /etc/service/nginx/run
 
 RUN sed -i 's/memory_limit = 128M/memory_limit = 256M/' /etc/php5/fpm/php.ini
 RUN mkdir /var/log/php5
-RUN sed -i 's/error_log = \/var\/log\/php5-fpm.log/error_log = \/var\/log\/php5\/php5-fpm.log/' /etc/php5/fpm/php-fpm.conf
 RUN mkdir /etc/service/php5-fpm
 ADD service/php5-fpm.sh /etc/service/php5-fpm/run
 
@@ -51,4 +50,4 @@ RUN mkdir -p /var/run/vsftpd/empty
 RUN mkdir /etc/service/vsftpd
 ADD service/vsftpd.sh /etc/service/vsftpd/run
 
-VOLUME ["/var/www", "/var/log/nginx", "/var/log/php5"]
+VOLUME ["/var/www", "/var/log"]
