@@ -1,5 +1,5 @@
 NAME = pomin5/php5-nginx
-VERSION = 0.1.1
+VERSION = 0.1.2
 
 .PHONY: build test run
 
