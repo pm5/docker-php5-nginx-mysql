@@ -1,6 +1,6 @@
 FROM phusion/baseimage:0.9.15
 MAINTAINER Pomin Wu <pomin5@gmail.com>
-ENV REFRESHED_AT 2015-01-08
+ENV REFRESHED_AT 2015-01-09
 
 ENV HOME /root
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
@@ -21,12 +21,12 @@ RUN useradd -u 1000 -g www-data --home-dir /home/app -s /bin/bash -m app
 RUN mkdir /etc/service/app
 ADD service/app.sh /etc/service/app/run
 
-ADD mykey.pub /tmp/mykey.pub
-RUN cat /tmp/mykey.pub >> /root/.ssh/authorized_keys && \
-  mkdir /home/app/.ssh && \
-  chown -R app:www-data /home/app/.ssh && \
-  cat /tmp/mykey.pub >> /home/app/.ssh/authorized_keys && \
-  rm -f /tmp/mykey.pub
+#ADD mykey.pub /tmp/mykey.pub
+#RUN cat /tmp/mykey.pub >> /root/.ssh/authorized_keys && \
+#  mkdir /home/app/.ssh && \
+#  chown -R app:www-data /home/app/.ssh && \
+#  cat /tmp/mykey.pub >> /home/app/.ssh/authorized_keys && \
+#  rm -f /tmp/mykey.pub
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN rm /etc/nginx/sites-enabled/default
