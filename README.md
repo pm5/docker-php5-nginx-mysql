@@ -1,5 +1,5 @@
 
-A Docker image for developing PHP app using PHP-FPM and nginx.
+A Docker image packing PHP5 + nginx + MySQL to be used as a tiny VPS.
 
 Usages
 ------
