@@ -1,5 +1,5 @@
-NAME = pomin5/php5-nginx
-VERSION = 0.1.2
+NAME = pomin5/php5-nginx-mysql
+VERSION = 20150111
 
 .PHONY: build test run
 

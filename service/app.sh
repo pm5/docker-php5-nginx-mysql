@@ -5,5 +5,6 @@ if [ ! -f /home/app/password.txt ]; then
   chmod 755 /var/www
   ln -s /var/www /home/app/public
   pwgen 16 1 > /home/app/password.txt
+  chown app:www-data /home/app/password.txt
   echo app:$(cat /home/app/password.txt) | chpasswd
 fi
