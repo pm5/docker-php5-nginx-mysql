@@ -15,7 +15,8 @@ RUN apt-get update && \
     apt-get install -yq php5 php5-fpm php-pear php5-gd php5-curl php5-sqlite php5-mysql && \
     apt-get install -yq nginx-full && \
     apt-get install -yq mysql-server && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /etc/service/root
 ADD service/root.sh /etc/service/root/run
