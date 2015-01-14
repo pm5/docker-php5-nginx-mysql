@@ -1,6 +1,6 @@
 FROM phusion/baseimage:0.9.15
 MAINTAINER Pomin Wu <pomin5@gmail.com>
-ENV REFRESHED_AT 2015-01-11
+ENV REFRESHED_AT 2015-01-14
 
 ENV HOME /root
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
@@ -17,8 +17,6 @@ RUN apt-get update && \
     apt-get install -yq mysql-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-VOLUMES ["/var/www", "/home", "/var/lib/mysql", "/root"]
 
 RUN mkdir /etc/service/root
 ADD service/root.sh /etc/service/root/run
